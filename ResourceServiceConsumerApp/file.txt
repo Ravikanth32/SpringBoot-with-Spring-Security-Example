@@ -1,0 +1,66 @@
+Hi ravikanth ravi
+
+/*String fileName="sample";
+		File file=new File("E://files/sample.js");
+		//String path=file.getAbsolutePath();
+		//System.out.println("@@@@@"+path);
+		String content=FileUtils.readFileToString(file);
+		System.out.println("Content @@@@@@@@@@ "+content);
+		
+		String name=file.getName();
+		String extension=null;
+        if(name.lastIndexOf(".") != -1 && name.lastIndexOf(".") != 0)
+        	extension=name.substring(name.lastIndexOf(".")+1);
+        if(extension.equals("pdf") || extension.equals("txt") || extension.equals("doc") || extension.equals("js")){
+        	System.out.println("file is "+extension);
+        	String path="E://files2/"+name;
+        	System.out.println("@@@@@@@@@@@@@"+path);
+        	File copyFile=new File(path);
+        	if(!copyFile.exists()){
+        		copyFile.createNewFile();
+        	}
+        	FileUtils.writeStringToFile(copyFile, content);
+        }
+		*/
+		
+		
+		##################URLName
+		String urlName="http://stackoverflow.com/questions/5867975/reading-websites-contents-into-string";
+	URL url = new URL(urlName);
+	String subString=urlName.substring(7,13);
+	URLConnection con = url.openConnection();
+	InputStream in = con.getInputStream();
+	String encoding = con.getContentEncoding();
+	encoding = encoding == null ? "UTF-8" : encoding;
+	String htmlContent = IOUtils.toString(in, encoding);
+	//System.out.println(htmlContent);
+	File file=new File("E://files2//htmlpages//"+subString+".html");
+	if(!file.exists()){
+		file.createNewFile();
+	} 
+	FileUtils.writeStringToFile(file, htmlContent);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	##########################copy image
+	String imageFile="E://files//download.jpeg";
+		
+		
+		File file1=new File(imageFile);
+		ImageInputStream in = new FileImageInputStream(file1);
+		String destImageFile="E://files2//images";
+		File file2=new File(destImageFile);
+		ImageOutputStream out = new FileImageOutputStream(file2);
+		byte[] buf = new byte[1024];
+		int len;
+		while ((len = in.read(buf)) > 0) {
+		out.write(buf, 0, len);
+		}
+		in.close();
+		out.close();
